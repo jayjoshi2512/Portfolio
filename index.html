@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Jay Joshi</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Google Fonts CSS link -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    
+    <script>
+        // Disable right-click context menu
+        window.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        // Disable F12 key and Ctrl+Shift+I (Inspect Element) combination
+        window.addEventListener('keydown', function (e) {
+            if ((e.key === "F12" && e.ctrlKey === true) || (e.key === "i" && e.ctrlKey === true && e.shiftKey === true)) {
+                e.preventDefault();
+            }
+        });
+
+        // Attempt to disable Ctrl+U (View Page Source)
+        window.addEventListener('keydown', function (e) {
+            if (e.key === "u" && e.ctrlKey === true) {
+                e.preventDefault();
+            }
+        });
+
+        // Disable Ctrl+Shift+J (JavaScript Console)
+        window.addEventListener('keydown', function (e) {
+            if ((e.key === "j" && e.ctrlKey === true && e.shiftKey === true)) {
+                e.preventDefault();
+            }
+        });
+
+        // Replace right-click context menu with a custom message
+        // window.oncontextmenu = function (e) {
+        //     e.preventDefault();
+        //     alert("Right-click is disabled.");
+        // };
+    </script>
+
+    <style>
+        /* Common styles */
+        /* Use the Roboto font for the body text */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Use the Montserrat font for headings */
+        h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Style the dark theme navbar elements */
+        body.dark .navbar-light .navbar-nav .nav-link {
+            /* color: #fff; */
+            color: #007bff;
+        }
+
+        /* Add a specific style for the "Portfolio." text in dark mode */
+        body.dark .navbar-light .navbar-brand {
+            color: #007bff;
+           
+        }
+
+        /* Increase the text size and change the font family for "Portfolio." */
+        .navbar-brand {
+            font-size: 30px; /* Adjust the size to your preference */
+            font-family: 'Ubuntu', sans-serif; /* Change 'Ubuntu' to your selected font */
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            font-size: 18px;
+            font-weight: bold;
+            backdrop-filter: blur(10px); /* Apply a background blur effect to the navbar */
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            margin: 0 15px;
+            transition: color 0.3s;
+            color: #000;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #007bff;
+            transform: scale(1.1);
+        }
+
+        /* Center-align the logo and navbar elements */
+        .navbar-brand, .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Dark theme styles */
+        body.dark {
+            background-color: #000000;
+            color: #fff;
+        }
+
+        /* Style the dark theme navbar elements */
+        body.dark .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        /* Project grid styles */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .project-card {
+            text-align: center;
+            background-color: #ffffff; /* Dark background for cards */
+            padding: 20px;
+            border: 1px solid #000000; /* Add border to cards */
+            /* border-radius: 5px; */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9); /* Add shadow to cards */
+        }
+
+        .project-card img {
+            max-width: 100%;
+            height: auto; /* Adjust the image size to maintain aspect ratio */
+        }
+
+        /* Container for typing effect and image */
+        .typing-image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+        }
+
+        /* Typing effect styles with fixed width */
+        .typing-effect {
+            width: 50%;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        /* Style "I'm" differently */
+        .typing-effect strong {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Image section styles with fixed width */
+        .image-section {
+            width: 50%;
+            height: auto;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        #Projects{
+        background-color: #f5f5f5; /* Light gray background */
+        }
+
+        #Projects h2{
+            color: #000;
+        }
+        /* Modify the text color in the projects section to black */
+        .project-card h3, .project-card p {
+            color: #000000;
+        }
+
+        .project-card {
+            padding: 10px; /* Reduce padding */
+            margin-bottom: 20px; /* Reduce margin between cards */
+        }
+
+        /* Card title and text styles */
+        .project-card h3 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .project-card p {
+            font-size: 14px;
+        }
+
+        /* Card hover effect */
+        .project-card:hover {
+            background-color: #fffafa; 
+            transition: background-color 0.3s;
+        }
+
+        .project-card .project-description {
+        margin-top: 15px;
+    }
+
+    body.dark .navbar-light .navbar-nav .nav-link {
+            color: #007bff; /*#fff;*/
+            transition: color 0.3s; /* Add a transition for smooth color change on hover */
+        }
+
+        /* Apply the hover effect for navbar elements in dark theme */
+        body.dark .navbar-light .navbar-nav .nav-link:hover {
+            color: #0057b3;
+            /* color: #fff; */
+            transform: scale(1.1);
+        }
+
+    #about {
+        padding: 60px 0;
+        font-family: 'Roboto', sans-serif; /* Use the Roboto font */
+    }
+
+    #about h2 {
+        font-family: 'Montserrat', sans-serif; /* Use the Montserrat font for headings */
+        font-size: 28px;
+        /* color: #007bff; Primary color */
+    }
+
+    #about p {
+        font-size: 18px;
+        color: #333; /* Dark gray text color */
+    }
+    
+    /* Maintain shadow effects of the cards on the dark theme */
+    /* body.dark .project-card {
+        
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.9); 
+        border-color: #fff; 
+    } */
+
+    body.dark #about h2 {
+            color: #fff;
+        }
+
+        /* Adjust the color of the "About Me" description text in dark theme */
+        body.dark #about p {
+            color: #ccc;
+        }
+
+        /* Adjust the color of the navbar toggler (hamburger menu) in dark theme */
+body.dark .navbar-toggler-icon {
+    background-color: #fff;
+    /* background-color: #007bff; */
+}
+
+.skill-image {
+    max-height: 220px; /* Set the maximum height to 100 pixels */
+    width: auto; /* Allow the width to adjust to maintain aspect ratio */
+}
+
+
+
+        /* Responsive font size for typing effect on smartphones */
+        @media (max-width: 768px) {
+            .typing-effect {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <!-- Your logo or brand can be added here -->
+            <a class="navbar-brand mx-auto" href="#" onclick="toggleTheme()">Portfolio.</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="py-5 text-center">
+        <!-- Container for typing effect and image -->
+        <div class="typing-image-container">
+            <!-- Typing effect section -->
+            <div class="typing-effect">
+                <span>I'm</span><strong>
+                <span id="pre-typed-text"></span>
+                <span id="typed-text"></span>
+                <span id="cursor">|</span>
+            </strong>
+            </div>
+
+            <!-- Image section -->
+            <div class="image-section">
+                <img src="images/admin2.png" alt="Your Image">
+            </div>
+        </div>
+    </section>
+
+    <section id="Projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4 text-uppercase">Projects</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="project-card">
+                        <img src="images/project1-main.png" alt="Project 1">
+                        <div class="project-description">
+                            <h3>Student Management System</h3>
+                            <p>A Student Management System is a software solution designed to efficiently manage student-related information and processes in educational institutions. It typically includes features for student enrollment, grade management, and reporting. This system streamlines administrative tasks, enhances communication, and ensures data accuracy, ultimately improving the overall management of students' academic journeys.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="project-card">
+                        <img src="project2.jpg" alt="Project 2">
+                        <h3>Project Title 2</h3>
+                        <p>Description of Project 2.</p>
+                    </div>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+        </div>
+    </section>
+
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-uppercase text-center">About Me</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-2">
+                            <!-- <i class="fas fa-user fa-2x text-primary"></i> -->
+                        </div>
+                        <div class="col-10">
+                            <p><i class="fas fa-user fa-2x text-primary"></i>
+                                <span class="text-primary">Hello, I'm Jay Joshi,</span> a passionate student and web developer. I'm dedicated to creating innovative web solutions.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 40px;"> <!-- Add margin-top for spacing -->
+                        <div class="col-2">
+                            <!-- <i class="fas fa-graduation-cap fa-2x text-primary"></i> -->
+                        </div>
+                        <div class="col-10">
+                            <p><i class="fas fa-graduation-cap fa-2x text-primary"></i>
+                                My journey in the world of technology started with a fascination for coding and problem-solving. I have a Diploma's degree in Computer Engineering. 
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 30px;"> <!-- Add margin-top for spacing -->
+                        <div class="col-2">
+                            <!-- <i class="fas fa-graduation-cap fa-2x text-primary"></i> -->
+                        </div>
+                        <div class="col-10">
+                            <p>
+                                <i class="fas fa-graduation-cap fa-2x text-primary"></i>
+                                I'm currently pursuing my BE degree in Computer Engineering at Government Engineering College Rajkot in the Gujarat Technological University.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-2">
+                            <!-- <i class="fas fa-laptop-code fa-2x text-primary"></i> -->
+                        </div>
+                        <div class="col-10">
+                            <p> <i class="fas fa-laptop-code fa-2x text-primary"></i>
+                                With a solid foundation in programming, I enjoy taking on challenging projects and turning creative ideas into functional websites and web applications. I have some experience in web technologies such as HTML, CSS, JavaScript, and various web frameworks.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 90px;"> <!-- Add margin-top for spacing -->
+                        <div class="col-2">
+                            <!-- <i class="fas fa-lightbulb fa-2x text-primary"></i> -->
+                        </div>
+                        <div class="col-10">
+                            <p> <i class="fas fa-lightbulb fa-2x text-primary"></i>
+                                My goal is to keep learning and growing as a developer, staying up-to-date with the latest trends and best practices in the industry. I'm enthusiastic about collaborating on exciting projects and contributing to the ever-evolving world of web development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    <!-- Add a Skills section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="text-uppercase text-center">Skills</h2>
+            <div class="row" style="margin-top: 50px;">
+                <!-- Skill Card - HTML -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4 text-white ">
+                        <img src="images/html-5.png" class="card-img-top skill-image" alt="HTML Logo">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title text-center">HTML</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Card - CSS -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4 text-white ">
+                        <img src="images/css-3.png" class="card-img-top skill-image" alt="CSS Logo">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title text-center">CSS</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Card - JavaScript -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4 text-white ">
+                        <img src="images/js.png" class="card-img-top skill-image" alt="JavaScript Logo">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title text-center">JavaScript</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Card - Your Skill 4 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4 text-white ">
+                        <img src="images/c.png" class="card-img-top skill-image" alt="Your Skill 4 Logo">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title text-center">C Language</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more skills as needed -->
+            </div>
+    
+            <div class="row" style="margin-top: 0px;">
+                <!-- Skill Card - Android -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4 text-white ">
+                        <img src="images/android.png" class="card-img-top skill-image" alt="Android Logo">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title text-center">Android</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Card - PHP -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4 text-white ">
+                        <img src="images/php.png" class="card-img-top skill-image" alt="PHP Logo">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title text-center ">PHP</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Card - MySQL -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4 text-white ">
+                        <img src="images/mysql.png" class="card-img-top skill-image" alt="MySQL Logo">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title text-center">MySQL</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Card - Your Skill 4 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4 text-white ">
+                        <img src="images/c++.png" class="card-img-top skill-image" alt="Your Skill 4 Logo">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title text-center">C++</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more skills as needed -->
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+
+    <section id="contact" class="py-5 text-center">
+        <div class="container">
+            <h2 class="mb-4 text-uppercase">Contact</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-4">
+                    <div class="social-icons">
+                        <p class="lead mt-2 text-center ">Connect with me on</p>
+                        <a href="https://www.linkedin.com/in/jay-joshi-539587276/" target="_blank" class="social-icon mr-3"><i class="fab fa-linkedin fa-3x"></i></a>
+                        <a href="https://www.instagram.com/jay._joshi._/" target="_blank" class="social-icon"><i class="fab fa-instagram fa-3x"></i></a>
+                    </div>
+                </div>
+                <!-- <div class="col-md-6">
+                    <form id="contact-form" action="sendmail.php" method="post">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" rows="4" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" name="submit" id="submit">Send</button>
+                    </form>
+                </div>
+            </div> -->
+        </div>
+    </section>
+    
+    <!-- Add your footer content here -->
+    <footer class="bg-dark text-white py-3 text-center">
+        &copy; 2023 Jay Joshi - GEC Rajkot [ GTU ]
+    </footer>
+
+    <!-- Add Bootstrap scripts at the end of the body tag -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Add JavaScript for smooth scrolling and theme toggle -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Theme toggle function
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark');
+        }
+
+        // Typing effect script
+        const textArray = ["Jay Joshi", "Student", "Web Developer"];
+        const typingSpeed = 100;
+        const erasingSpeed = 50;
+        const newTextDelay = 2000;
+
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        const typedText = document.getElementById("typed-text");
+        const cursor = document.getElementById("cursor");
+
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                if (!cursor.classList.contains("typing")) {
+                    cursor.classList.add("typing");
+                }
+                typedText.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+            } else {
+                cursor.classList.remove("typing");
+                setTimeout(erase, newTextDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                if (!cursor.classList.contains("typing")) {
+                    cursor.classList.add("typing");
+                }
+                typedText.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingSpeed);
+            } else {
+                cursor.classList.remove("typing");
+                textArrayIndex++;
+                if (textArrayIndex >= textArray.length) {
+                    textArrayIndex = 0;
+                }
+                setTimeout(type, typingSpeed + 1100);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            if (textArray.length) {
+                setTimeout(type, newTextDelay + 250);
+            }
+        });
+
+        // JavaScript to apply background blur effect to navbar on scroll
+        window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 0) {
+                navbar.style.backdropFilter = "blur(10px)";
+            } else {
+                navbar.style.backdropFilter = "none";
+            }
+        });
+
+        
+    // Close the navbar when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const navbarNav = document.getElementById('navbarNav');
+            if (navbarNav.classList.contains('show')) {
+                navbarNav.classList.remove('show');
+            }
+        });
+    });
+
+
+//     const contactForm = document.getElementById("contact-form");
+// const successAlert = document.getElementById("success-alert"); // You should create a success alert element in your HTML
+
+// contactForm.addEventListener("submit", function (e) {
+//     e.preventDefault();
+
+//     const email = document.getElementById("email").value;
+//     const message = document.getElementById("message").value;
+
+//     const xhr = new XMLHttpRequest();
+//     const formData = new FormData(contactForm);
+
+//     xhr.open("POST", "sendmail.php", true);
+//     xhr.onload = function () {
+//         if (xhr.status === 200) {
+//             try {
+//                 const response = JSON.parse(xhr.responseText);
+//                 if (response.status === "success") {
+//                     contactForm.reset();
+//                     successAlert.style.display = "block"; // Display a success message to the user
+//                 } else if (response.status === "error") {
+//                     alert(response.message); // Handle error cases
+//                 }
+//             } catch (e) {
+//                 alert("An error occurred while processing the response.");
+//             }
+//         }
+//     };
+
+//     xhr.send(formData);
+// });
+
+    </script>
+</body>
+</html>
